@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   // select by html selector
-  selector: "app-servers"
+  selector: "app-servers",
   // select by attribute
   // selector: "[app-servers]",
   // select by classname
