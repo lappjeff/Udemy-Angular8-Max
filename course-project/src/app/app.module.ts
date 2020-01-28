@@ -3,24 +3,17 @@ import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { RecipeListComponent } from "./recipe-book/recipe-list/recipe-list.component";
-import { RecipeItemComponent } from "./recipe-book/recipe-item/recipe-item.component";
-import { RecipeDetailComponent } from "./recipe-book/recipe-detail/recipe-detail.component";
-import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-list.component';
-import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
-import { HeaderComponent } from './header/header/header.component';
-import { RecipesComponent } from './recipe-book/recipes/recipes.component';
+
+import { HeaderComponent } from "./header/header/header.component";
+import { RecipesComponent } from "./recipes/recipes.component";
+import { RecipeListComponent } from "./recipes/recipe-list/recipe-list.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent,
     HeaderComponent,
-    RecipesComponent
+    RecipesComponent,
+    RecipeListComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
