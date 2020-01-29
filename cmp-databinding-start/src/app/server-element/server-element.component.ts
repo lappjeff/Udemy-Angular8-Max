@@ -3,7 +3,10 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  DoCheck,
+  AfterContentInit,
+  AfterContentChecked
 } from "@angular/core";
 
 @Component({
@@ -11,17 +14,13 @@ import {
   templateUrl: "./server-element.component.html",
   styleUrls: ["./server-element.component.css"]
 })
-export class ServerElementComponent implements OnInit, OnChanges {
+export class ServerElementComponent implements OnInit {
   @Input("svrElement") element: { type: string; name: string; content: string };
   @Input() name: string;
   constructor() {
     console.log("constructor called");
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("onChanges called");
-    console.log(changes);
-  }
   ngOnInit() {
     console.log("nginit called");
   }
