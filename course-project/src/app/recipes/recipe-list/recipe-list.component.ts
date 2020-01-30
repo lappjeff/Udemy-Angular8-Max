@@ -15,7 +15,7 @@ export class RecipeListComponent implements OnInit {
       "https://natashaskitchen.com/wp-content/uploads/2018/08/Chicken-Stir-Fry-1-1.jpg"
     ),
     new Recipe(
-      "A test recipe",
+      "Another test recipe",
       "Test recipe",
       "https://natashaskitchen.com/wp-content/uploads/2018/08/Chicken-Stir-Fry-1-1.jpg"
     )
