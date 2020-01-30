@@ -7,12 +7,20 @@
       <br /><br />
       <ul class="list-group">
         <div *ngIf="onlyOdd">
-          <li class="list-group-item" *ngFor="let oddNum of oddNumbers">
+          <li
+            class="list-group-item"
+            [ngClass]="{ odd: oddNum % 2 !== 0 }"
+            *ngFor="let oddNum of oddNumbers"
+          >
             {{ oddNum }}
           </li>
         </div>
         <div *ngIf="!onlyOdd">
-          <li class="list-group-item" *ngFor="let evenNum of evenNumbers">
+          <li
+            class="list-group-item"
+            [ngClass]="{ odd: oddNum % 2 === 0 }"
+            *ngFor="let evenNum of evenNumbers"
+          >
             {{ evenNum }}
           </li>
         </div>
