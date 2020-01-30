@@ -6,7 +6,10 @@ import {
   SimpleChanges,
   DoCheck,
   AfterContentInit,
-  AfterContentChecked
+  AfterContentChecked,
+  ViewChild,
+  ElementRef,
+  ContentChild
 } from "@angular/core";
 
 @Component({
@@ -17,9 +20,9 @@ import {
 export class ServerElementComponent implements OnInit {
   @Input("svrElement") element: { type: string; name: string; content: string };
   @Input() name: string;
-  constructor() {
-    console.log("constructor called");
-  }
+  @ViewChild("header", { static: true }) header: ElementRef;
+  @ContentChild("contentParagraph", { static: true }) paragraph: ElementRef;
+  constructor() {}
 
   ngOnInit() {
     console.log("nginit called");
