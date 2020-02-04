@@ -19,8 +19,17 @@ export class AccountsService {
   }
 
   updateStatus(id: number, status: string) {
-    const accountsCopy = [...this.accounts];
-    accountsCopy[id].status = status;
+    // const accountsCopy = [...this.accounts];
+    const accountsCopy = this.accounts.map((account, index) => {
+      if (index === id) {
+        account.status = status;
+        return account;
+      } else {
+        return account;
+      }
+    });
+
+    // accountsCopy[id].status = status;
     this.accounts = accountsCopy;
   }
 }
