@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { Routes } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 
 const appRoutes: Routes = [
   { path: " ", component: HomeComponent },
@@ -28,7 +28,7 @@ import { ServersService } from "./servers/servers.service";
     EditServerComponent,
     ServerComponent
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [ServersService],
   bootstrap: [AppComponent]
 })
