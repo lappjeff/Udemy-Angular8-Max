@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter } from "@angular/core";
 import { LoggingService } from "../logging.service";
 import { AccountsService } from "../accounts-service";
 
@@ -19,5 +19,6 @@ export class AccountComponent {
   onSetTo(status: string) {
     this.accountsService.updateStatus(this.id, status);
     // this.loggingService.logStatusChange(status);
+    this.accountsService.statusUpdated.emit(status);
   }
 }
