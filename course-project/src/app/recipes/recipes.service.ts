@@ -19,7 +19,7 @@ export class RecipesService {
   ];
   constructor() {}
 
-  getRecipes() {
+  getRecipes(): Recipe[] {
     return this.recipes.slice();
   }
 }
