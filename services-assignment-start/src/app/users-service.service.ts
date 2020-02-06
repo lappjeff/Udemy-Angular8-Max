@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-export class UsersServiceService {
+export class UsersService {
+  activeUsers: string[] = ["Max", "Anna"];
+  inactiveUsers: string[] = ["Chris", "Manu"];
 
-  constructor() { }
+  constructor() {}
 }
