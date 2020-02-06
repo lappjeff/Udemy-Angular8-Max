@@ -16,6 +16,6 @@ export class ActiveUsersComponent implements OnInit {
   constructor(private usersService: UsersService) {}
 
   onSetToInactive(id: number) {
-    this.userSetToInactive.emit(id);
+    this.usersService.setInactive(id);
   }
 }
