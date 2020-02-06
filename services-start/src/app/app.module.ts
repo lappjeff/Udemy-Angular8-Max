@@ -11,7 +11,7 @@ import { LoggingService } from "./logging.service";
 @NgModule({
   declarations: [AppComponent, AccountComponent, NewAccountComponent],
   imports: [BrowserModule, FormsModule],
-  providers: [AccountsService, LoggingService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
