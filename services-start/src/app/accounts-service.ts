@@ -1,3 +1,7 @@
+import { LoggingService } from "./logging.service";
+import { Injectable } from "@angular/core";
+
+@Injectable()
 export class AccountsService {
   accounts = [
     {
@@ -14,10 +18,13 @@ export class AccountsService {
     }
   ];
 
+  constructor(private logger: LoggingService) {}
+
   addAccount(name: string, status: string) {
     this.accounts.push({ name, status });
     // doesn't work because spreading doesn't change the object reference, only the content - the reference must change for proper change detection
     // this.accounts = [...this.accounts, { name, status }];
+    this.logger.logStatusChange(status);
   }
 
   updateStatus(id: number, status: string) {
@@ -29,5 +36,6 @@ export class AccountsService {
         return account;
       }
     });
+    this.logger.logStatusChange(status);
   }
 }
