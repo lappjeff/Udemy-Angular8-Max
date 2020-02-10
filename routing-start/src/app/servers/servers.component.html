@@ -7,6 +7,7 @@
         *ngFor="let server of servers"
         [routerLink]="['/servers', 5, 'edit']"
         [queryParams]="{ allowEdit: '1' }"
+        fragment="loading"
       >
         {{ server.name }}
       </a>
