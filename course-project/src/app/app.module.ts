@@ -1,3 +1,4 @@
+import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -25,7 +26,7 @@ import { DropdownDirective } from "./shared/ingredient.directive";
     ShoppingEditComponent,
     DropdownDirective
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
