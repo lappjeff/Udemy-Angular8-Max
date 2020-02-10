@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -25,7 +26,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
     PageNotFoundComponent
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [ServersService],
+  providers: [ServersService, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
