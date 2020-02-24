@@ -22,9 +22,13 @@
             id="email"
             name="email"
             email
+            #email="ngModel"
             required
             ngModel
           />
+          <span *ngIf="email.invalid && email.touched" class="help-block">
+            Invalid Email
+          </span>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
@@ -34,8 +38,13 @@
             class="form-control"
             id="password"
             name="password"
+            required
             ngModel
+            #password="ngModel"
           />
+          <span *ngIf="password.invalid && password.touched" class="help-block">
+            Invalid Password
+          </span>
         </div>
         <div class="form-group">
           <label for="subscription">Subscription</label>
@@ -44,8 +53,18 @@
             id="subscription"
             class="form-control"
             [ngModel]="defaultSubscription"
-          ></select>
+          >
+            <option
+              value="subscription"
+              *ngFor="let subscription of subscriptions"
+              >{{ subscription }}</option
+            >
+          </select>
         </div>
+        <span *ngIf="f.invalid && f.touched" class="help-block"
+          >Invalid Form!</span
+        >
+        <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
       </form>
     </div>
   </div>
