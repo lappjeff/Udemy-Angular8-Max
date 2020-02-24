@@ -8,10 +8,10 @@ import { Component, ViewChild } from "@angular/core";
 })
 export class AppComponent {
   @ViewChild("f", { static: true }) signupForm: NgForm;
-  defaultSubscription = "Advanced";
   subscriptions = ["Advanced", "Pro", "Basic"];
+  defaultSubscription = "Advanced";
 
   onSubmit() {
-    console.log(this.signupForm);
+    console.log(this.signupForm.value);
   }
 }
