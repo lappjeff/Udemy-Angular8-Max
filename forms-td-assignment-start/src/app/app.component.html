@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form #f="ngForm">
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="email">Email</label>
           <input
@@ -52,11 +52,7 @@
         <span *ngIf="f.invalid && f.touched" class="help-block"
           >Invalid Form!</span
         >
-        <button
-          class="btn btn-primary"
-          (click)="onSubmit()"
-          [disabled]="f.invalid"
-        >
+        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
           Submit
         </button>
       </form>
