@@ -23,7 +23,8 @@ export class PostsService {
 
     this.http
       .post<{ name: string }>(`${this.baseUrl}/posts.json`, postData, {
-        observe: "response"
+        observe: "response",
+        responseType: "json"
       })
       .subscribe(
         data => {
