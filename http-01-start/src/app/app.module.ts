@@ -1,3 +1,4 @@
+import { LoggingInterceptorService } from "./logging-interceptor.service";
 import { AuthInterceptorService } from "./auth-interceptor.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -13,6 +14,11 @@ import { AppComponent } from "./app.component";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
       multi: true
     }
   ],
