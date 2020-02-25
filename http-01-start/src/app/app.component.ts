@@ -11,6 +11,7 @@ import { Post } from "./post.model";
 export class AppComponent implements OnInit {
   loadedPosts: Post[] = [];
   baseUrl = "https://ng-complete-guide-39db7.firebaseio.com/";
+  isFetching = false;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   private fetchPosts() {
+    this.isFetching = true;
     this.http
       .get<{ [key: string]: Post }>(`${this.baseUrl}/posts.json`)
       .pipe(
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit {
         })
       )
       .subscribe(posts => {
+        this.isFetching = false;
         this.loadedPosts = posts;
       });
   }
