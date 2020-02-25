@@ -1,7 +1,12 @@
-import { Subject, throwError } from "rxjs";
-import { map, catchError } from "rxjs/operators";
+import { Subject } from "rxjs";
+import { map, tap } from "rxjs/operators";
 import { Post } from "./post.model";
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpEventType
+} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({
@@ -17,7 +22,9 @@ export class PostsService {
     const postData: Post = { title, content };
 
     this.http
-      .post<{ name: string }>(`${this.baseUrl}/posts.json`, postData)
+      .post<{ name: string }>(`${this.baseUrl}/posts.json`, postData, {
+        observe: "response"
+      })
       .subscribe(
         data => {
           console.log(data);
@@ -57,6 +64,16 @@ export class PostsService {
   }
 
   deletePosts() {
-    return this.http.delete(`${this.baseUrl}/posts.json`);
+    return this.http
+      .delete(`${this.baseUrl}/posts.json`, {
+        observe: "events"
+      })
+      .pipe(
+        tap(event => {
+          if (event.type === HttpEventType.Response) {
+            console.log(event.body);
+          }
+        })
+      );
   }
 }
