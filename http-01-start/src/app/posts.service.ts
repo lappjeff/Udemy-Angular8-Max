@@ -29,8 +29,9 @@ export class PostsService {
   }
 
   fetchPosts() {
-    return (
-      this.http.get<{ [key: string]: Post }>(`${this.baseUrl}/posts.json`).pipe(
+    return this.http
+      .get<{ [key: string]: Post }>(`${this.baseUrl}/posts.json`)
+      .pipe(
         map(data => {
           let postsArray: Post[] = [];
           for (const key in data) {
@@ -40,12 +41,11 @@ export class PostsService {
           }
           return postsArray;
         })
-      ),
-      catchError(error => {
-        // not doing anything currently
-        return throwError(error);
-      })
-    );
+      );
+    // catchError(error => {
+    //   // not doing anything currently
+    //   return throwError(error);
+    // })
   }
 
   deletePosts() {
