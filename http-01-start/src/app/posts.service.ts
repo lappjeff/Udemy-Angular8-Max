@@ -1,7 +1,7 @@
 import { Subject, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import { Post } from "./post.model";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({
@@ -30,7 +30,9 @@ export class PostsService {
 
   fetchPosts() {
     return this.http
-      .get<{ [key: string]: Post }>(`${this.baseUrl}/posts.json`)
+      .get<{ [key: string]: Post }>(`${this.baseUrl}/posts.json`, {
+        headers: new HttpHeaders({ "Custom-Header": "Hello" })
+      })
       .pipe(
         map(data => {
           let postsArray: Post[] = [];
