@@ -1,6 +1,6 @@
+import { Subscription } from "rxjs";
 import { PostsService } from "./posts.service";
-import { map } from "rxjs/operators";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Post } from "./post.model";
 
 @Component({
@@ -8,13 +8,19 @@ import { Post } from "./post.model";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   loadedPosts: Post[] = [];
   isFetching = false;
   error = null;
+  private errorSub: Subscription;
+
   constructor(private postsService: PostsService) {}
 
   ngOnInit() {
+    this.errorSub = this.postsService.error.subscribe(errorMessage => {
+      this.error = errorMessage;
+    });
+
     this.isFetching = true;
     this.postsService.fetchPosts().subscribe(
       data => {
@@ -25,6 +31,10 @@ export class AppComponent implements OnInit {
         this.error = error.message;
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.errorSub.unsubscribe();
   }
 
   onCreatePost(postData: Post) {

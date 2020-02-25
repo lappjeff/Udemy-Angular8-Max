@@ -1,3 +1,4 @@
+import { Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { Post } from "./post.model";
 import { HttpClient } from "@angular/common/http";
@@ -8,6 +9,7 @@ import { Injectable } from "@angular/core";
 })
 export class PostsService {
   baseUrl = "https://ng-complete-guide-39db7.firebaseio.com/";
+  error = new Subject<string>();
 
   constructor(private http: HttpClient) {}
 
@@ -16,9 +18,14 @@ export class PostsService {
 
     this.http
       .post<{ name: string }>(`${this.baseUrl}/posts.json`, postData)
-      .subscribe(data => {
-        console.log(data);
-      });
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          this.error.next(error.message);
+        }
+      );
   }
 
   fetchPosts() {
