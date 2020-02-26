@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "add-loading-spinner",
+  selector: "app-loading-spinner",
   template: `
     <div class="lds-roller">
       <div></div>
