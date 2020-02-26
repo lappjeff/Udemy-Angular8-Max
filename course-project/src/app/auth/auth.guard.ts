@@ -1,4 +1,4 @@
-import { map } from "rxjs/operators";
+import { map, take } from "rxjs/operators";
 import {
   CanActivate,
   ActivatedRouteSnapshot,
@@ -22,6 +22,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | Observable<boolean | UrlTree> {
     return this.authService.user.pipe(
+      take(1),
       map(user => {
         const isAuth = !!user;
         if (isAuth) {
