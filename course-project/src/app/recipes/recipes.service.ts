@@ -11,23 +11,14 @@ export class RecipesService {
   recipeSelected: EventEmitter<Recipe> = new EventEmitter();
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      "A test recipe",
-      "Test recipe",
-      "https://natashaskitchen.com/wp-content/uploads/2018/08/Chicken-Stir-Fry-1-1.jpg",
-      [new Ingredient("Chicken", 1), new Ingredient("Broccoli", 2)]
-    ),
-    new Recipe(
-      "Another test recipe",
-      "Test recipe",
-      "https://natashaskitchen.com/wp-content/uploads/2018/08/Chicken-Stir-Fry-1-1.jpg",
-      [new Ingredient("Chicken", 1), new Ingredient("Broccoli", 2)]
-    )
-  ];
+  private recipes: Recipe[] = [];
 
   constructor(private slService: ShoppingListService) {}
 
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
   getRecipes(): Recipe[] {
     return this.recipes.slice();
   }
