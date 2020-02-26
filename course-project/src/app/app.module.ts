@@ -1,3 +1,4 @@
+import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -16,7 +17,7 @@ import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-ed
 import { DropdownDirective } from "./shared/ingredient.directive";
 import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
-import { AuthComponent } from './auth/auth/auth.component';
+import { AuthComponent } from "./auth/auth/auth.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AuthComponent } from './auth/auth/auth.component';
     DropdownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
