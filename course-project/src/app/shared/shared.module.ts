@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { AlertComponent } from "./alert/alert.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { DropdownDirective } from "./ingredient.directive";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -12,13 +13,14 @@ import { DropdownDirective } from "./ingredient.directive";
     PlaceHolderDirective,
     DropdownDirective
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [
     AlertComponent,
     LoadingSpinnerComponent,
     PlaceHolderDirective,
     DropdownDirective,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   entryComponents: [AlertComponent]
 })
