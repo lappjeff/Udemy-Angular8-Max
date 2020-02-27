@@ -1,4 +1,3 @@
-import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -8,24 +7,14 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
 import { HeaderComponent } from "./header/header/header.component";
-import { DropdownDirective } from "./shared/ingredient.directive";
 import { AuthComponent } from "./auth/auth/auth.component";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
-import { AlertComponent } from "./shared/alert/alert.component";
-import { PlaceHolderDirective } from "./shared/placeholder/placeholder.directive";
 import { RecipesModule } from "./recipes/recipes.module";
 import { ShoppingListModule } from "./shopping-list/shopping-list.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    DropdownDirective,
-    AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
-    PlaceHolderDirective
-  ],
+  declarations: [AppComponent, HeaderComponent, AuthComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -33,7 +22,8 @@ import { ShoppingListModule } from "./shopping-list/shopping-list.module";
     ReactiveFormsModule,
     HttpClientModule,
     RecipesModule,
-    ShoppingListModule
+    ShoppingListModule,
+    SharedModule
   ],
   providers: [
     {
@@ -42,7 +32,6 @@ import { ShoppingListModule } from "./shopping-list/shopping-list.module";
       multi: true
     }
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [AlertComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

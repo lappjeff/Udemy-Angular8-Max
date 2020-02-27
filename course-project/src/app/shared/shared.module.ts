@@ -17,7 +17,9 @@ import { DropdownDirective } from "./ingredient.directive";
     AlertComponent,
     LoadingSpinnerComponent,
     PlaceHolderDirective,
-    DropdownDirective
-  ]
+    DropdownDirective,
+    CommonModule
+  ],
+  entryComponents: [AlertComponent]
 })
 export class SharedModule {}
