@@ -6,10 +6,10 @@
 
     <div class="navbar-default">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active" *ngIf="isAuthenticated">
+        <li routerLinkActive="active" *ngIf="isAuthenticatedGetter">
           <a routerLink="/recipes">Recipes</a>
         </li>
-        <li routerLinkActive="active" *ngIf="!isAuthenticated">
+        <li routerLinkActive="active" *ngIf="!isAuthenticatedGetter">
           <a routerLink="/auth">Authenticate</a>
         </li>
         <li routerLinkActive="active">
@@ -20,12 +20,12 @@
         <li>
           <a
             style="cursor: pointer;"
-            *ngIf="isAuthenticated"
+            *ngIf="isAuthenticatedGetter"
             (click)="onLogout()"
             >Logout</a
           >
         </li>
-        <li class="dropdown" appDropdown *ngIf="isAuthenticated">
+        <li class="dropdown" appDropdown *ngIf="isAuthenticatedGetter">
           <a style="cursor: pointer;" class="dropdown-toggle" role="button"
             >Manage <span class="caret"></span
           ></a>
