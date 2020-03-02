@@ -7,11 +7,15 @@ const initState = {
 
 export function shoppingListReducer(
   state = initState,
-  action: ShoppingListActions.AddIngredient
+  action: ShoppingListActions.ShoppingListActions
 ) {
   switch (action.type) {
     case ShoppingListActions.ADD_INGREDIENT:
       return { ...state, ingredients: [...state.ingredients, action.payload] };
+      break;
+    case ShoppingListActions.ADD_INGREDIENTS:
+      return { ...state, ingredients: [...state.ingredients, action.payload] };
+      break;
     default:
       return state;
   }
