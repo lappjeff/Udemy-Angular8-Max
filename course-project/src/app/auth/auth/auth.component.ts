@@ -35,7 +35,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   alertHost: PlaceHolderDirective;
   private closeSub: Subscription;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.select("auth").subscribe(authState => {
+      this.isLoading = authState.loading;
+      this.error = authState.authError;
+    });
+  }
 
   ngOnDestroy() {
     if (this.closeSub) this.closeSub.unsubscribe();
@@ -58,19 +63,19 @@ export class AuthComponent implements OnInit, OnDestroy {
     } else {
       authObs = this.authService.signUp(email, password);
     }
-    this.isLoading = true;
-    authObs.subscribe(
-      data => {
-        console.log(data);
-        this.isLoading = false;
-        this.router.navigate(["./recipes"]);
-      },
-      errorMessage => {
-        this.error = errorMessage;
-        this.showErrorAlert(errorMessage);
-        this.isLoading = false;
-      }
-    );
+
+    // authObs.subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.isLoading = false;
+    //     this.router.navigate(["./recipes"]);
+    //   },
+    //   errorMessage => {
+    //     this.error = errorMessage;
+    //     this.showErrorAlert(errorMessage);
+    //     this.isLoading = false;
+    //   }
+    // );
 
     form.reset();
   }
