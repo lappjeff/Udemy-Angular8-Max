@@ -31,30 +31,8 @@ export class AuthService {
     private store: Store<fromApp.AppState>
   ) {}
 
-  signUp(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(this.signUpUrl, {
-        email,
-        password,
-        returnSecureToken: true
-      })
-      .pipe(
-        catchError(this.handleError),
-        tap(data => {
-          this.handleAuth(
-            data.email,
-            data.localId,
-            data.idToken,
-            parseInt(data.expiresIn)
-          );
-        })
-      );
-  }
-
   logout() {
-    // this.user.next(null);
     this.store.dispatch(new authActions.Logout());
-    this.router.navigate(["/auth"]);
     localStorage.removeItem("userData");
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
@@ -66,26 +44,6 @@ export class AuthService {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
-  }
-
-  login(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(this.loginUrl, {
-        email,
-        password,
-        returnSecureToken: true
-      })
-      .pipe(
-        catchError(this.handleError),
-        tap(data => {
-          this.handleAuth(
-            data.email,
-            data.localId,
-            data.idToken,
-            parseInt(data.expiresIn)
-          );
-        })
-      );
   }
 
   private handleAuth(

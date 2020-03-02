@@ -34,9 +34,10 @@ export class AuthComponent implements OnInit, OnDestroy {
   @ViewChild(PlaceHolderDirective, { static: false })
   alertHost: PlaceHolderDirective;
   private closeSub: Subscription;
+  private storeSub: Subscription;
 
   ngOnInit() {
-    this.store.select("auth").subscribe(authState => {
+    this.storeSub = this.store.select("auth").subscribe(authState => {
       this.isLoading = authState.loading;
       this.error = authState.authError;
       if (this.error) {
@@ -47,6 +48,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.closeSub) this.closeSub.unsubscribe();
+    if (this.storeSub) this.storeSub.unsubscribe();
   }
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -68,7 +70,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   onHandleError() {
-    this.error = null;
+    this.store.dispatch(new AuthActions.ClearError());
   }
 
   private showErrorAlert(message: string) {
