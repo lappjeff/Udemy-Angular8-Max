@@ -1,4 +1,3 @@
-import { LOGIN_FAIL } from "./auth.actions";
 import { Action } from "@ngrx/store";
 
 export const LOGIN_START = "[Auth] Login Start";
